@@ -2,6 +2,7 @@ package one;
 
 /**
  * 计算阶乘的递归函数
+ * @author hph
  */
 public class Demo2 {
     public static void main(String[] args) {

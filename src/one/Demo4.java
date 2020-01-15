@@ -2,6 +2,7 @@ package one;
 
 /**
  * 递归解决数组元素相加的问题
+ * @author hph
  */
 public class Demo4 {
     public static void main(String[] args) {

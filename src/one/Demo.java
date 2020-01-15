@@ -2,6 +2,7 @@ package one;
 
 /**
  * 二分法
+ * @author hph
  */
 public class Demo {
     public static void main(String[] args) {

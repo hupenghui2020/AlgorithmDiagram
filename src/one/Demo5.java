@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 /**
  * 快速排序
+ * @author hph
  */
 public class Demo5 {
 

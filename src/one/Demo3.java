@@ -2,6 +2,7 @@ package one;
 
 /**
  * 使用递归解决土地分割的问题
+ * @author hph
  */
 public class Demo3 {
 
