@@ -1,12 +1,13 @@
 package one;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * 节点
  * @author hph
  */
-public class Node {
+public class Node implements Serializable {
 
     private String name;
 
@@ -42,12 +43,11 @@ public class Node {
             return false;
         }
         Node node = (Node) o;
-        return Objects.equals(name, node.name) &&
-                Objects.equals(isProcessed, node.isProcessed);
+        return Objects.equals(name, node.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, isProcessed);
+        return Objects.hash(name);
     }
 }
