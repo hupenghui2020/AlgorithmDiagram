@@ -3,8 +3,12 @@ package one;
 import java.util.*;
 
 /**
- * 狄克斯特拉算法java实现
+ * 狄克斯特拉算法java实现（大概思路就是不断更新当前节点到start节点的距离）
+ * 思路：不断更新两个表：节点到start节点的距离表、节点与父节点关系表
+ * 节点到start节点的距离表：根据start节点到当前节点的路径不断更新该节点对应的距离数据
+ * 节点与父节点关系表：每次更新《节点到start节点的距离表》的时候，都更新一下当前节点
  * 7.5章
+ * 7.1的 A、B、C 直接带参数进去算就可以
  * @author hph
  */
 public class Demo7 {
@@ -61,20 +65,19 @@ public class Demo7 {
             Map<Node, Integer> neighbors = graph.get(node);
 
             // 遍历当前节点所有邻居
-            for(Map.Entry<Node, Integer> n : neighbors.entrySet()){
-
-                Integer newCost = cost + n.getValue();
-
+            Node finalNode = node;
+            neighbors.forEach((key, value) -> {
+                Integer newCost = cost + value;
                 // 当前邻居节点距离start节点的距离
-                Integer nCost  = costs.get(n.getKey());
-                // 如果经当前节点前往该邻居更近
-                if(nCost > newCost){
+                Integer nCost = costs.get(key);
+                // 如果经当前节点前往该邻居更近（就是说经过这个节点到达end节点更近）
+                if (nCost > newCost) {
                     // 就更新该邻居的开销（距离start节点的距离）
-                    costs.put(n.getKey(), newCost);
+                    costs.put(key, newCost);
                     // 同时设置该邻居的父节点设置为当前节点
-                    parents.put(n.getKey(), node);
+                    parents.put(key, finalNode);
                 }
-            }
+            });
             node = findLowestCostNode(costs);
         }
     }
@@ -112,12 +115,12 @@ public class Demo7 {
 
         graph.put(new Node("end"), Collections.emptyMap());
 
-        // 节点至start节点的距离
+        // 节点至start节点的距离（除start节点的邻节点，其它到start节点的距离都是Integer.MAX_VALUE）
         costs.put(new Node("A"), 6);
         costs.put(new Node("B"), 2);
         costs.put(new Node("end"), Integer.MAX_VALUE);
 
-        // 节点的父节点
+        // 节点的父节点（除start、end节点外，其它所有节点的父节点都是start，end节点的父节点为空）
         parents.put(new Node("A"), new Node("start"));
         parents.put(new Node("B"), new Node("start"));
         parents.put(new Node("end"), new Node(""));

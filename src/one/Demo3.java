@@ -24,6 +24,7 @@ public class Demo3 {
 
             height = width;
             int temp = height;
+            // 长除以宽的余数作为下一个宽
             width = temp % width;
             return doIt(width, height);
         }

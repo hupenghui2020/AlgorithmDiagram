@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 /**
  * 快速排序
+ * 思路：每次以第一个元素为准，与其它元素对比，小的放左边，大的放右边，然后左右再作为两个数组进行相同的操作，进行递归
  * @author hph
  */
 public class Demo5 {
