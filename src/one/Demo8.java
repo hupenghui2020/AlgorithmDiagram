@@ -60,7 +60,7 @@ public class Demo8 {
     private static void init(Set<String> statesNeeded, Map<String, Set<String>> stations) {
 
         // 添加州
-        String[] strings = {"mt","wa","or","id","nv","ut","ca","az"};
+        String[] strings = {"mt","wa","or","id","nv","ut","ca","az","jx"};
         statesNeeded.addAll(Arrays.asList(strings));
 
         // 添加广播台
